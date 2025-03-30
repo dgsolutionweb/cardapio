@@ -52,7 +52,8 @@ const MenuPage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/products');
+        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+        const response = await fetch(`${API_URL}/products`);
         
         if (!response.ok) {
           throw new Error('Erro ao carregar produtos');

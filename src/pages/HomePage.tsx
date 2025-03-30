@@ -200,7 +200,8 @@ const HomePage: React.FC = () => {
         setLoading(true);
         
         // Buscar produtos
-        const productsResponse = await fetch('http://localhost:3001/api/products');
+        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+        const productsResponse = await fetch(`${API_URL}/products`);
         
         if (!productsResponse.ok) {
           throw new Error('Erro ao carregar produtos');
